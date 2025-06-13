@@ -7,6 +7,8 @@ export default defineConfig({
     // Base path dimana aplikasi akan di-deploy
     base: '/Smartsaku/',
 
+    publicDir: 'public',
+
     // Konfigurasi build
     build: {
         outDir: 'dist',
@@ -16,8 +18,8 @@ export default defineConfig({
         sourcemap: true,
         rollupOptions: {
             input: {
-                main: 'index.html',
-                home: 'src/templates/home.html'
+                main: resolve(__dirname, 'index.html'),
+                home: resolve(__dirname, 'src/templates/home.html')
             },
             output: {
                 entryFileNames: 'assets/[name]-[hash].js',
@@ -30,7 +32,7 @@ export default defineConfig({
     // Menggunakan resolve untuk menyederhanakan import
     resolve: {
         alias: {
-            '@': resolve(__dirname, 'src'),
+            '@': '/src',
             '@css': resolve(__dirname, 'src/css'),
             '@js': resolve(__dirname, 'src/js'),
             '@images': resolve(__dirname, 'src/images'),
