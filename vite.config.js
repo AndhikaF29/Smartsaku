@@ -1,17 +1,26 @@
 // vite.config.js
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import react from '@vitejs/plugin-react'; // atau plugin lain sesuai project Anda
 
 export default defineConfig({
     // Base path dimana aplikasi akan di-deploy
-    base: '/',
+    base: '/Smartsaku/',
 
     // Konfigurasi build
     build: {
         outDir: 'dist',
+        emptyOutDir: true,
         assetsDir: 'assets',
         minify: 'terser',
         sourcemap: true,
+        rollupOptions: {
+            output: {
+                entryFileNames: 'assets/[name]-[hash].js',
+                chunkFileNames: 'assets/[name]-[hash].js',
+                assetFileNames: 'assets/[name]-[hash].[ext]'
+            }
+        }
     },
 
     // Menggunakan resolve untuk menyederhanakan import
@@ -40,7 +49,7 @@ export default defineConfig({
     assetsInclude: ['**/*.html'],
 
     // Plugin untuk Vite
-    plugins: [],
+    plugins: [react()],
 
     css: {
         postcss: {
