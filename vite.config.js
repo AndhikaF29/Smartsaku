@@ -15,6 +15,10 @@ export default defineConfig({
         minify: 'terser',
         sourcemap: true,
         rollupOptions: {
+            input: {
+                main: 'index.html',
+                home: 'src/templates/home.html'
+            },
             output: {
                 entryFileNames: 'assets/[name]-[hash].js',
                 chunkFileNames: 'assets/[name]-[hash].js',
